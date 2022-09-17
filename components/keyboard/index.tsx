@@ -49,8 +49,8 @@ export function Key(props: { gameState: GameState, char: string, onPress: (key: 
 	return <div
 		onMouseDown={handleTouchStart}
 		onMouseUp={handleTouchEnd}
-		onTouchStart={handleTouchStart}
-		onTouchEnd={handleTouchEnd}
+		onTouchStart={() => setIsTouching(true)}
+		onTouchEnd={() => setIsTouching(false)}
 		className={clsx(styles.key, {
 			[styles.touch]: isTouching
 		})}>

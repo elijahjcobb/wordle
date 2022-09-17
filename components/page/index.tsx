@@ -3,11 +3,11 @@ import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 import { Keyboard } from "../keyboard";
 import { Nav } from "../nav";
 import { type BoxProps, Solution, BoxState } from "../solution";
-import { WORDS } from "../words";
 import styles from "./index.module.css";
 
 export interface PageProps {
 	solution: string;
+	words: string[]
 }
 
 function getEmptyRow(state = BoxState.EMPTY): BoxProps[] {
@@ -55,7 +55,7 @@ export enum GameState {
 }
 
 
-export function Page({ solution }: PageProps) {
+export function Page({ solution, words }: PageProps) {
 
 	const [puzzle, setPuzzle] = useState<BoxProps[][]>(DEFAULT_PUZZLE);
 	const [index, setIndex] = useState(0);
@@ -82,7 +82,7 @@ export function Page({ solution }: PageProps) {
 
 			const newPuzzle = [...puzzle];
 
-			if (WORDS.indexOf(getWordFromRow(newPuzzle[row]).toLowerCase()) === -1) {
+			if (words.indexOf(getWordFromRow(newPuzzle[row]).toLowerCase()) === -1) {
 				newPuzzle[row] = getEmptyRow(BoxState.ERROR);
 				setPuzzle(newPuzzle);
 				setIndex(0);
