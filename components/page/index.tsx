@@ -3,6 +3,7 @@ import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 import { Keyboard } from "../keyboard";
 import { Nav } from "../nav";
 import { type BoxProps, Solution, BoxState } from "../solution";
+import { Window } from "../window";
 import styles from "./index.module.css";
 
 export interface PageProps {
@@ -118,10 +119,17 @@ export function Page({ solution, words }: PageProps) {
 		}
 	};
 
-	return <div className={styles.container}>
-		<Nav />
-		<Solution puzzle={puzzle} row={row} index={index} />
-		<Keyboard onKeyPress={handleKeyPress} gameState={gameState} />
-	</div>
+	return <>
+		<div className={styles.container}>
+			<Nav />
+			<Solution puzzle={puzzle} row={row} index={index} />
+			<Keyboard onKeyPress={handleKeyPress} gameState={gameState} />
+		</div>
+		{gameState !== GameState.PLAYING && <Window
+			gameState={gameState}
+			solution={solution}
+			puzzle={puzzle}
+		/>}
+	</>
 }
 

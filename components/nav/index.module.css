@@ -7,6 +7,8 @@
   gap: var(--sp);
   box-shadow: 0 0 var(--sp-s) var(--accent-3);
   width: 100%;
+  height: var(--nav);
+  z-index: 5;
 }
 
 .container h1 {

@@ -23,6 +23,7 @@ a {
   --sar: env(safe-area-inset-right);
   --sab: env(safe-area-inset-bottom);
   --sal: env(safe-area-inset-left);
+  --nav: 58px;
   --bg: #fff;
   --fg: #000;
   --pri: #007fff;
