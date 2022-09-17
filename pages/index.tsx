@@ -6,7 +6,7 @@ export default Page;
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
 	const { solution } = await fetch("https://wordle-api.elijahcobb.com/").then(r => r.json())
-	const file = await readFile("public/words.txt");
+	const file = await readFile("./words.txt");
 	return {
 		props: {
 			solution: solution.toUpperCase(),
