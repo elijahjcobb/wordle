@@ -1,16 +1,15 @@
 import { GetServerSideProps } from "next";
 import { PageProps, Page } from "../components/page";
-import { readFile } from 'fs/promises';
 
 export default Page;
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
 	const { solution } = await fetch("https://wordle-api.elijahcobb.com/").then(r => r.json())
-	const file = await readFile("./words.txt");
+	const words = await fetch("https://wordle.elijahcobb.com/words.txt").then(r => r.text())
 	return {
 		props: {
 			solution: solution.toUpperCase(),
-			words: file.toString().split("\n")
+			words: words.split("\n")
 		}
 	}
 }
