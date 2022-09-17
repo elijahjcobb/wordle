@@ -1,40 +1,11 @@
-import type { GetServerSideProps, NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { GetServerSideProps } from "next";
+import { PageProps, Page } from "../components/page";
 
-export interface HomeProps {
-  solution: string;
-}
+export default Page;
 
-const Home: NextPage<HomeProps> = props => {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>wordle</title>
-      </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          wordle
-        </h1>
-        <p className={styles.description}>
-          <code className={styles.code}>{props.solution}</code>
-        </p>
-      </main>
-    </div>
-  )
-}
-
-export default Home
-
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-
-  const res = await fetch("https://wordle-api.elijahcobb.com");
-  const { solution } = await res.json()
-
-  return {
-    props: {
-      solution
-    }
-  }
+export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
+	const { solution } = await fetch("https://wordle-api.elijahcobb.com/").then(r => r.json())
+	return {
+		props: { solution: solution.toUpperCase() }
+	}
 }

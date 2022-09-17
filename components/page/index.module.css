@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp);
+  bottom: calc(var(--sab) + var(--sp-s));
+  top: var(--sat);
+  position: absolute;
+}
