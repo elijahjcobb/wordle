@@ -64,7 +64,7 @@ export function Page({ solution, words }: PageProps) {
 	const [gameState, setGameState] = useState<GameState>(GameState.PLAYING);
 
 	useEffect(() => {
-		const today = `${getWordleDay()}`;
+		const today = getWordleDay();
 		if (localStorage.getItem("today") === today) {
 			setPuzzle(JSON.parse(localStorage.getItem("puzzle") ?? '[]'));
 			setGameState(GameState.DONE);
