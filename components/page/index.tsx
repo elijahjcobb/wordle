@@ -1,5 +1,6 @@
 
 import { KeyboardEvent, useCallback, useEffect, useState } from "react";
+import { getWordleDay } from "../../data/helpers";
 import { Keyboard } from "../keyboard";
 import { Nav } from "../nav";
 import { type BoxProps, Solution, BoxState } from "../solution";
@@ -51,8 +52,7 @@ function computeNewStateForRow(row: BoxProps[], solution: string): BoxProps[] {
 
 export enum GameState {
 	PLAYING,
-	WIN,
-	LOSE,
+	DONE,
 }
 
 
@@ -63,6 +63,13 @@ export function Page({ solution, words }: PageProps) {
 	const [row, setRow] = useState(0);
 	const [gameState, setGameState] = useState<GameState>(GameState.PLAYING);
 
+	useEffect(() => {
+		const today = `${getWordleDay()}`;
+		if (localStorage.getItem("today") === today) {
+			setPuzzle(JSON.parse(localStorage.getItem("puzzle") ?? '[]'));
+			setGameState(GameState.DONE);
+		}
+	}, []);
 	const handleKeyPress = (key: string) => {
 
 		if (gameState !== GameState.PLAYING) return;
@@ -96,7 +103,7 @@ export function Page({ solution, words }: PageProps) {
 			setPuzzle(newPuzzle);
 
 			if (newRow.every(v => v.state === BoxState.CORRECT)) {
-				setGameState(GameState.WIN);
+				setGameState(GameState.DONE);
 				return;
 			}
 
@@ -104,7 +111,7 @@ export function Page({ solution, words }: PageProps) {
 			setRow(r => {
 				let newR = r + 1;
 				if (newR > 5) {
-					setGameState(GameState.LOSE);
+					setGameState(GameState.DONE);
 				}
 				return newR;
 			});
@@ -126,7 +133,6 @@ export function Page({ solution, words }: PageProps) {
 			<Keyboard onKeyPress={handleKeyPress} gameState={gameState} />
 		</div>
 		{gameState !== GameState.PLAYING && <Window
-			gameState={gameState}
 			solution={solution}
 			puzzle={puzzle}
 		/>}
