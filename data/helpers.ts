@@ -13,7 +13,7 @@ export function getWordleScore(puzzle: Puzzle): number {
 
 export function getWordleDay(): string {
   const today = new Date();
-  const begin = new Date("6/20/2021");
+  const begin = new Date("6/19/2021");
   const diffMs = today.getTime() - begin.getTime();
   const dayCount = Math.floor(diffMs / 1000 / 60 / 60 / 24);
   return `${dayCount}`;

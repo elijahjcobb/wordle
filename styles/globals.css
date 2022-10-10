@@ -26,6 +26,7 @@ a {
   --nav: 58px;
   --bg: #fff;
   --fg: #000;
+  --fg-rgb: 0, 0, 0;
   --pri: #007fff;
   --green: #1ea896;
   --yellow: #f3b61f;
@@ -45,12 +46,14 @@ a {
   --font: "Roboto", sans-serif;
   --font-s: "Roboto Slab", serif;
   --font-m: "Roboto Mono", monospace;
+  --shadow: 0 8px 30px rgba(var(--fg-rgb), 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #000;
     --fg: #fff;
+    --fg-rgb: 255, 255, 255;
     --accent-1: #111;
     --accent-2: #222;
     --accent-3: #333;

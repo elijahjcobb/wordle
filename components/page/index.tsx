@@ -4,6 +4,7 @@ import { getWordleDay } from "../../data/helpers";
 import { Keyboard } from "../keyboard";
 import { Nav } from "../nav";
 import { type BoxProps, Solution, BoxState } from "../solution";
+import { Toast } from "../toast";
 import { Window } from "../window";
 import styles from "./index.module.css";
 
@@ -62,6 +63,7 @@ export function Page({ solution, words }: PageProps) {
 	const [index, setIndex] = useState(0);
 	const [row, setRow] = useState(0);
 	const [gameState, setGameState] = useState<GameState>(GameState.PLAYING);
+	const [toast, setToast] = useState<string | undefined>(undefined);
 
 	useEffect(() => {
 		const today = getWordleDay();
@@ -134,8 +136,10 @@ export function Page({ solution, words }: PageProps) {
 		</div>
 		{gameState !== GameState.PLAYING && <Window
 			solution={solution}
+			setToast={setToast}
 			puzzle={puzzle}
 		/>}
+		{toast && <Toast msg={toast} setToast={setToast} />}
 	</>
 }
 

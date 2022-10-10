@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 
-.buttons button:hover {
+.buttons button:active {
   transform: scale(1.125);
 }
 

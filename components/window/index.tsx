@@ -9,9 +9,10 @@ import styles from "./index.module.css";
 export interface WindowProps {
 	puzzle: BoxProps[][];
 	solution: string;
+	setToast: (msg: string) => void;
 }
 
-export function Window({ puzzle, solution }: WindowProps) {
+export function Window({ puzzle, solution, setToast }: WindowProps) {
 
 	const score = useMemo(() => getWordleScore(puzzle), [puzzle]);
 	const day = useMemo(() => getWordleDay(), []);
@@ -63,6 +64,7 @@ export function Window({ puzzle, solution }: WindowProps) {
 				window.open("/", "_self")
 			}}>Done</button>
 			<button className={styles.share} onClick={() => {
+				setToast("Copied to Clipboard");
 				navigator.clipboard.writeText(message);
 			}}>Share</button>
 		</div>
