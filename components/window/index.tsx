@@ -3,6 +3,7 @@ import { getWordleDay, getWordleScore } from "../../data/helpers";
 import { saveGame } from "../../data/storage";
 import { GameState } from "../page"
 import { BoxProps, BoxState, Solution } from "../solution";
+import { History } from "./history";
 import styles from "./index.module.css";
 
 export interface WindowProps {
@@ -47,9 +48,7 @@ export function Window({ puzzle, solution }: WindowProps) {
 	}, [puzzle, solution]);
 
 	return <div className={styles.container}>
-		<div className={styles.solution}>
-			<span>{solution}</span>
-		</div>
+		<span className={styles.solution}>{solution}</span>
 		<div className={styles.solutionContainer}>
 			<Solution
 				puzzle={puzzle}
@@ -57,6 +56,7 @@ export function Window({ puzzle, solution }: WindowProps) {
 				row={-1}
 			/>
 		</div>
+		<History />
 		<div className={styles.spacer} />
 		<div className={styles.buttons}>
 			<button className={styles.reset} onClick={() => {

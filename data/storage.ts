@@ -6,7 +6,6 @@ export function saveGame(puzzle: Puzzle, solution: string): void {
 
   localStorage.setItem("puzzle", JSON.stringify(puzzle));
   localStorage.setItem("today", today);
-  localStorage.setItem("solution", solution);
 
   const history = JSON.parse(localStorage.getItem("history") ?? "{}");
   history[today] = getWordleScore(puzzle);

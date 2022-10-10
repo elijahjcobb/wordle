@@ -27,8 +27,7 @@
 }
 
 .solutionContainer {
-  height: 70%;
-  min-height: 200px;
+  flex-grow: 100;
   display: flex !important;
   padding: var(--sp) 0;
 }
@@ -50,9 +49,10 @@
 }
 
 .solution {
-  font-family: var(--font-m);
   font-size: 2em;
+  font-weight: bolder;
   padding: var(--sp-s);
+  letter-spacing: 0.2ch;
 }
 
 .buttons {
