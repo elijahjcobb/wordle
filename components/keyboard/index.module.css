@@ -1,7 +1,7 @@
 .keyboard,
 .row {
   display: flex;
-  gap: var(--sp-s);
+  gap: var(--sp-xs);
 }
 
 .keyboard {
@@ -25,7 +25,7 @@
   background: var(--accent-2);
   border-radius: var(--sp-xs);
   height: calc(2 * var(--sp-xl));
-  width: 9%;
+  width: 10%;
   font-weight: normal;
   font-family: var(--font);
   font-size: 1.5em;
@@ -40,4 +40,17 @@
   transform: scale(1.25);
   background: var(--accent-3);
   z-index: 2;
+}
+
+.incorrect {
+  background: var(--accent-3);
+  color: var(--accent-4);
+}
+
+.misplaced {
+  background: var(--yellow);
+}
+
+.correct {
+  background: var(--green);
 }

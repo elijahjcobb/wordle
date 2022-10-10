@@ -132,7 +132,7 @@ export function Page({ solution, words }: PageProps) {
 		<div className={styles.container}>
 			<Nav />
 			<Solution puzzle={puzzle} row={row} index={index} />
-			<Keyboard onKeyPress={handleKeyPress} gameState={gameState} />
+			<Keyboard puzzle={puzzle} onKeyPress={handleKeyPress} gameState={gameState} />
 		</div>
 		{gameState !== GameState.PLAYING && <Window
 			solution={solution}
