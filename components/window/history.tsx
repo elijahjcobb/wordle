@@ -27,7 +27,6 @@ export function History() {
 		const historyValues = Object.values(history);
 		for (const historicalScore of historyValues) distribution.set(historicalScore, (distribution.get(historicalScore) ?? 0) + 1)
 		const totalGames = historyValues.length;
-		// console.log(distribution);
 		return ARRAY.map(i => {
 			const count = distribution.get(i - 1) ?? 0;
 			return { value: count / totalGames, count }
