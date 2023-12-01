@@ -7,14 +7,14 @@ type Props = {
 	searchParams: Record<string, string>
 }
 
-export function generateMetadata(
+export async function generateMetadata(
 	{ searchParams }: Props,
 	parent: ResolvingMetadata
-): Metadata {
+): Promise<Metadata> {
+	const previousImages = (await parent).openGraph?.images || []
 	return {
-		...parent,
 		openGraph: {
-			images: [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`)]
+			images: [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`), ...previousImages]
 		}
 	}
 }

@@ -12,6 +12,7 @@ export async function getWordOfTheDay(): Promise<WordOfTheDay> {
     const url = `https://www.nytimes.com/svc/wordle/v2/${today.getFullYear()}-${
       today.getMonth() + 1
     }-${today.getDate()}.json`;
+    console.log(url);
     const response = await fetch(url, {
       cache: "no-cache",
     });
