@@ -17,7 +17,7 @@ export function Window({ puzzle, solution, setToast }: WindowProps) {
 	const score = useMemo(() => getWordleScore(puzzle), [puzzle]);
 
 	const message = useMemo<string>(() => {
-		const isFailed = puzzle[5][0].state !== BoxState.CORRECT;
+		const isFailed = puzzle[5][0].state === BoxState.INCORRECT;
 		return generateShareURL(isFailed ? -1 : score, puzzle.flat().map(v => v.state));
 		// const lines: string[] = [];
 		// lines.push(`Wordle ${day} ${score}/6`);
