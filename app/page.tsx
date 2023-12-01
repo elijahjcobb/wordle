@@ -12,9 +12,13 @@ export async function generateMetadata(
 	parent: ResolvingMetadata
 ): Promise<Metadata> {
 	const previousImages = (await parent).openGraph?.images || []
+	const images = [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`), ...previousImages];
 	return {
 		openGraph: {
-			images: [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`), ...previousImages]
+			images
+		},
+		twitter: {
+			images,
 		}
 	}
 }
