@@ -15,7 +15,9 @@ export async function getWordOfTheDay(): Promise<WordOfTheDay> {
     const response = await fetch(url, {
       cache: "no-cache",
     });
-    const json = await response.json();
+    const text = await response.text();
+    console.log(text);
+    const json = JSON.parse(text);
     const meta = T.object({
       id: T.number(),
       solution: T.string(),
