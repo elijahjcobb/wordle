@@ -26,7 +26,8 @@ const GREEN = '#1EA896';
 const RED = '#EF2D56';
 const YELLOW = '#F3B61F';
 const GRAY = '#D9D9D9';
-const EMPTY = '#FAFAFA';
+const EMPTY = '#EAEAEA';
+const BLANK = '#FAFAFA';
 
 
 function colorFromKey(key: string): string {
@@ -40,7 +41,7 @@ function colorFromKey(key: string): string {
     case 'e':
       return EMPTY;
     default:
-      return EMPTY;
+      return BLANK;
   }
 }
 
