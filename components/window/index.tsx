@@ -5,6 +5,7 @@ import { BoxProps, BoxState, Solution } from "../solution";
 import { History } from "./history";
 import styles from "./index.module.css";
 import { generateShareURL } from "@/lib/generate-og-url";
+import { track } from "@/lib/track";
 
 export interface WindowProps {
 	puzzle: BoxProps[][];
@@ -43,6 +44,7 @@ export function Window({ puzzle, solution, setToast }: WindowProps) {
 			<button className={styles.share} onClick={() => {
 				setToast("Copied to Clipboard");
 				navigator.clipboard.writeText(message);
+				track('share');
 			}}>Share</button>
 		</div>
 	</div>

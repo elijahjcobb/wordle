@@ -9,6 +9,7 @@ import { Window } from "@/components/window";
 import styles from "./index.module.css";
 import type { WordOfTheDay } from "@/lib/get-word-of-the-day";
 import { isInWordList } from "@/lib/is-in-word-list";
+import { track } from "@/lib/track";
 
 export interface PageProps {
 	solution: string;
@@ -99,6 +100,7 @@ export function Page({ meta }: { meta: WordOfTheDay }) {
 
 			if (newRow.every(v => v.state === BoxState.CORRECT)) {
 				setGameState(GameState.DONE);
+				track("playing_win");
 				return;
 			}
 
@@ -106,14 +108,18 @@ export function Page({ meta }: { meta: WordOfTheDay }) {
 				newPuzzle[row] = getEmptyRow(BoxState.ERROR);
 				setPuzzle(newPuzzle);
 				setIndex(0);
+				track("playing_guess_dne");
 				return;
 			}
+
+			track("playing_guess_incorrect");
 
 			setIndex(0);
 			setRow(r => {
 				let newR = r + 1;
 				if (newR > 5) {
 					setGameState(GameState.DONE);
+					track("playing_loss");
 				}
 				return newR;
 			});
