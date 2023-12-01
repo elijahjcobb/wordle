@@ -1,5 +1,5 @@
-import { five_char_words } from "./word-list";
+import { WORD_LIST } from "./word-list";
 
 export function isInWordList(value: string): boolean {
-  return five_char_words.includes(value.toLowerCase());
+  return WORD_LIST.includes(value.toLowerCase());
 }
