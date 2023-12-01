@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { getWordleDay, getWordleScore } from "../../lib/helpers";
+import { getWordleScore } from "../../lib/helpers";
 import { saveGame } from "../../lib/storage";
 import { BoxProps, BoxState, Solution } from "../solution";
 import { History } from "./history";
@@ -19,30 +19,6 @@ export function Window({ puzzle, solution, setToast }: WindowProps) {
 	const message = useMemo<string>(() => {
 		const isFailed = puzzle[5][0].state === BoxState.INCORRECT;
 		return generateShareURL(isFailed ? -1 : score, puzzle.flat().map(v => v.state));
-		// const lines: string[] = [];
-		// lines.push(`Wordle ${day} ${score}/6`);
-		// lines.push('');
-		// for (const puzzleLine of puzzle) {
-		// 	if (puzzleLine[0].state === BoxState.EMPTY) break;
-		// 	const newLine: string[] = [];
-		// 	for (const puzzleItemOf of puzzleLine) {
-		// 		switch (puzzleItemOf.state) {
-		// 			case BoxState.CORRECT:
-		// 				newLine.push("🟩");
-		// 				break;
-		// 			case BoxState.INCORRECT:
-		// 				newLine.push("⬜");
-		// 				break;
-		// 			case BoxState.MISPLACED:
-		// 				newLine.push("🟨");
-		// 				break;
-
-		// 		}
-		// 	}
-		// 	lines.push(newLine.join(""));
-		// }
-		// lines.push("\nhttps://wordle.elijahcobb.app");
-		// return lines.join("\n");
 	}, [puzzle, score]);
 
 	useEffect(() => {

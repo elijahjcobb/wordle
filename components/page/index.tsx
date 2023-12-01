@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getWordleDay } from "@/lib/helpers";
 import { Keyboard } from "@/components/keyboard";
 import { Nav } from "@/components/nav";
@@ -8,6 +8,7 @@ import { Toast } from "@/components/toast";
 import { Window } from "@/components/window";
 import styles from "./index.module.css";
 import type { WordOfTheDay } from "@/lib/get-word-of-the-day";
+import { isInWordList } from "@/lib/is-in-word-list";
 
 export interface PageProps {
 	solution: string;
@@ -92,20 +93,19 @@ export function Page({ meta }: { meta: WordOfTheDay }) {
 
 			const newPuzzle = [...puzzle];
 
-			// if (!isInWordList(getWordFromRow(newPuzzle[row]).toLowerCase())) {
-			// 	newPuzzle[row] = getEmptyRow(BoxState.ERROR);
-			// 	setPuzzle(newPuzzle);
-			// 	setIndex(0);
-
-			// 	return;
-			// }
-
 			const newRow = computeNewStateForRow(newPuzzle[row], meta.solution);
 			newPuzzle[row] = newRow;
 			setPuzzle(newPuzzle);
 
 			if (newRow.every(v => v.state === BoxState.CORRECT)) {
 				setGameState(GameState.DONE);
+				return;
+			}
+
+			if (!isInWordList(getWordFromRow(newPuzzle[row]).toLowerCase())) {
+				newPuzzle[row] = getEmptyRow(BoxState.ERROR);
+				setPuzzle(newPuzzle);
+				setIndex(0);
 				return;
 			}
 
