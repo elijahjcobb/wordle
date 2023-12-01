@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function RootLayout({
 	children,
@@ -17,7 +18,10 @@ export default function RootLayout({
 				<link rel="apple-touch-icon" href="/icon.png" />
 				<meta name="theme-color" content='var(--bg)' />
 			</head>
-			<body>{children}</body>
+			<body>
+				<Analytics />
+				{children}
+			</body>
 		</html>
 	)
 }
