@@ -23,11 +23,10 @@ function scoreElement(score: number) {
 }
 
 const GREEN = '#1EA896';
-const RED = '#EF2D56';
 const YELLOW = '#F3B61F';
 const GRAY = '#D9D9D9';
-const EMPTY = '#EAEAEA';
-const BLANK = '#FAFAFA';
+const EMPTY = '#FAFAFA';
+const STROKE = '#eaeaea';
 
 
 function colorFromKey(key: string): string {
@@ -41,14 +40,14 @@ function colorFromKey(key: string): string {
     case 'e':
       return EMPTY;
     default:
-      return BLANK;
+      return EMPTY;
   }
 }
 
 function boxesElement(boxes: string[]): JSX.Element[] {
   return boxes.map((box, i) => {
     const color = colorFromKey(box);
-    return <rect key={`box:${i}`} x={((i % 5) * 80) + 733} y={(Math.floor(i / 5) * 80) + 83} width="64" height="64" rx="8" fill={color} />
+    return <rect key={`box:${i}`} x={((i % 5) * 80) + 733} y={(Math.floor(i / 5) * 80) + 83} width="64" stroke={STROKE} height="64" rx="8" fill={color} />
   });
 }
 
