@@ -1,0 +1,17 @@
+.container {
+  padding: var(--sp-s) var(--sp);
+  background: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp);
+  box-shadow: 0 0 var(--sp-s) var(--accent-3);
+  width: 100%;
+  height: var(--nav);
+  z-index: 5;
+}
+
+.container h1 {
+  font-family: var(--font-s);
+  font-size: 1.5rem;
+}

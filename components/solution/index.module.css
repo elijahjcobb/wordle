@@ -1,0 +1,62 @@
+.container {
+  flex-grow: 1;
+  width: 100%;
+  padding: 0 var(--sp);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container,
+.row {
+  gap: var(--sp-s);
+}
+
+.box,
+.row {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  border-radius: var(--sp-xxs);
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.box span {
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.empty {
+  background: var(--bg);
+  border: solid var(--sp-xxs) var(--accent-3);
+}
+
+.error {
+  background: var(--bg);
+  border: solid var(--sp-xxs) var(--red);
+}
+
+.incorrect {
+  background: var(--accent-3);
+}
+
+.misplaced {
+  background: var(--yellow);
+}
+
+.correct {
+  background: var(--green);
+}
+
+.active {
+  outline: solid var(--sp-xs) var(--pri);
+  border: none;
+}

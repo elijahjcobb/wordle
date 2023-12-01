@@ -1,0 +1,56 @@
+.keyboard,
+.row {
+  display: flex;
+  gap: var(--sp-xs);
+}
+
+.keyboard {
+  width: 100%;
+  background: var(--bg);
+  flex-direction: column;
+  align-items: center;
+  padding: var(--sp-xs);
+  margin-bottom: var(--sab);
+}
+
+.row {
+  justify-content: center;
+  width: 100%;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent-2);
+  border-radius: var(--sp-xs);
+  height: calc(2 * var(--sp-xl));
+  width: 10%;
+  font-weight: normal;
+  font-family: var(--font);
+  font-size: 1.5em;
+  box-shadow: 0 0 var(--sp-s) var(--accent-2);
+  transition: 50ms ease-in-out;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+}
+
+.touch {
+  transform: scale(1.25);
+  background: var(--accent-3);
+  z-index: 2;
+}
+
+.incorrect {
+  background: var(--accent-3);
+  color: var(--accent-4);
+}
+
+.misplaced {
+  background: var(--yellow);
+}
+
+.correct {
+  background: var(--green);
+}
