@@ -1,7 +1,7 @@
 import { Page } from "@/components/page";
 import { generateOGURLFromParams } from "@/lib/generate-og-url";
 import { getWordOfTheDay } from "@/lib/get-word-of-the-day";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
 	searchParams: Record<string, string>
@@ -9,13 +9,12 @@ type Props = {
 
 export async function generateMetadata(
 	{ searchParams }: Props,
-	parent: ResolvingMetadata
 ): Promise<Metadata> {
-	const previousImages = (await parent).openGraph?.images || []
-	const images = [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`), ...previousImages];
+	if (!searchParams.score) return {};
+	const images = [generateOGURLFromParams(`score=${searchParams.score}&boxes=${searchParams.boxes}`)];
 	return {
 		openGraph: {
-			images
+			images,
 		},
 		twitter: {
 			images,
