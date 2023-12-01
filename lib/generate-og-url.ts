@@ -3,11 +3,11 @@ import { BoxState } from "@/components/solution";
 function boxStateToColor(state: BoxState): string {
   switch (state) {
     case BoxState.CORRECT:
-      return "g";
+      return "c";
     case BoxState.INCORRECT:
-      return "r";
+      return "i";
     case BoxState.MISPLACED:
-      return "y";
+      return "m";
     case BoxState.EMPTY:
       return "e";
     default:

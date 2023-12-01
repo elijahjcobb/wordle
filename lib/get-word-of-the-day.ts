@@ -17,15 +17,12 @@ function getESTDate(): string {
 
 export async function getWordOfTheDay(): Promise<WordOfTheDay> {
   try {
-    const today = new Date();
     const url = `https://www.nytimes.com/svc/wordle/v2/${getESTDate()}.json`;
-    console.log(url);
     const response = await fetch(url, {
       cache: "no-cache",
     });
-    const text = await response.text();
-    console.log(text);
-    const json = JSON.parse(text);
+    if (!response.ok) throw new Error(`Got a ${response.status} from NYT.`);
+    const json = await response.json();
     const meta = T.object({
       id: T.number(),
       solution: T.string(),

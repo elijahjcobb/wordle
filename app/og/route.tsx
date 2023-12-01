@@ -31,14 +31,14 @@ const EMPTY = '#FAFAFA';
 
 function colorFromKey(key: string): string {
   switch (key) {
-    case 'g':
+    case 'c':
       return GREEN;
-    case 'r':
-      return RED;
-    case 'y':
+    case 'i':
+      return GRAY;
+    case 'm':
       return YELLOW;
     case 'e':
-      return GRAY;
+      return EMPTY;
     default:
       return EMPTY;
   }
