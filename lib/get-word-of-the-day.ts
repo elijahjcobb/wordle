@@ -10,8 +10,8 @@ export async function getWordOfTheDay(): Promise<WordOfTheDay> {
   try {
     const today = new Date();
     const url = `https://www.nytimes.com/svc/wordle/v2/${today.getFullYear()}-${
-      today.getMonth() + 1
-    }-${today.getDate()}.json`;
+      today.getUTCMonth() + 1
+    }-${today.getUTCDate()}.json`;
     console.log(url);
     const response = await fetch(url, {
       cache: "no-cache",
