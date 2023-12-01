@@ -12,7 +12,9 @@ function getESTDate(): string {
   });
   const date = today.split(",")[0];
   const [month, day, year] = date.split("/");
-  return `${year}-${month}-${day}`;
+  return `${year}-${month.length === 1 ? `0${month}` : month}-${
+    day.length === 1 ? `0${day}` : day
+  }`;
 }
 
 export async function getWordOfTheDay(): Promise<WordOfTheDay> {
