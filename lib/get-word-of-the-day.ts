@@ -6,12 +6,19 @@ export interface WordOfTheDay {
   editor: string;
 }
 
+function getESTDate(): string {
+  const today = new Date().toLocaleString("en-US", {
+    timeZone: "America/New_York",
+  });
+  const date = today.split(",")[0];
+  const [month, day, year] = date.split("/");
+  return `${year}-${month}-${day}`;
+}
+
 export async function getWordOfTheDay(): Promise<WordOfTheDay> {
   try {
     const today = new Date();
-    const url = `https://www.nytimes.com/svc/wordle/v2/${today.getFullYear()}-${
-      today.getUTCMonth() + 1
-    }-${today.getUTCDate()}.json`;
+    const url = `https://www.nytimes.com/svc/wordle/v2/${getESTDate()}.json`;
     console.log(url);
     const response = await fetch(url, {
       cache: "no-cache",
